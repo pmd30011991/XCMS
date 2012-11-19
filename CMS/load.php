@@ -1,22 +1,28 @@
-<?php 
-	require_once(CONFIG_DIR.DS.'constants.php');
-    require_once(CLASS_DIR.DS.'Loader.php');
+<?php
+
+/* Load some file use to initilization */
+require_once(CONFIG_DIR.DS.'constants.php');
+require_once(CLASS_DIR.DS.'Loader.php');
+require_once(ABSDIR.DS.'functions.php');
     
-    /* Start Load some Class */
     
-    Loader::import('Database');
-    Loader::import('Setting');
-    Loader::import('Request');
-    Loader::import('Theme');
-    // thi?t l?p bi?n toàn c?c $setting d? s? d?ng load setting du?i database;
-    Setting::getInstance();
-    Request::getInstance();
-    Theme::getInstance();
-    //load file functions d? xài toàn c?c.
-     require_once(ABSDIR.DS.'functions.php');
-     
-     pr(Request::get_site_url());
-     get_header();
-    get_footer();
+    
+ /* Start import Class  */
+ Loader::import('Database');
+ Loader::import('Setting');
+ Loader::import('Request');
+ Loader::import('Theme');
+ Loader::import('Session');
+
+    
+ /*Create instance of objects */
+ Setting::getInstance();
+ Request::getInstance();
+ Theme::getInstance();
+ Session::getInstance();
+ 
+ /*Debug */
+ 
+ pr(Request::$QUERY);
     
 ?>

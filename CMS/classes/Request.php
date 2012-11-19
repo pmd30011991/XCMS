@@ -15,9 +15,9 @@
             $url_element = parse_url($url);
             self::$SCHEME = $url_element['scheme'];
             self::$HOST = $url_element['host'];
-            self::$PORT = $url_element['port'];
-            self::$PATH = $url_element['path'];
-            self::$QUERY = $url_element['query'];
+            self::$PORT = isset($url_element['port'])?$url_element['port']:'';
+            self::$PATH = isset($url_element['path'])?$url_element['path']:'';
+            self::$QUERY = isset($url_element['query'])? $url_element['query'] :'';
         }
         
         public static function getInstance(){
