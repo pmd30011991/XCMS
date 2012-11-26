@@ -28,7 +28,9 @@ class Database extends PDO{
     
     public function query($string) {
         $st = self::$dbh->prepare($string);
-        return $st->execute();
+        $st->execute();
+        $result = $st->fetch();
+        return $result;
     }
     public function getData($model,$args = array()){
         $where = "";

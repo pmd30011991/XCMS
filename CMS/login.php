@@ -1,5 +1,9 @@
-<?php 
-    Authorize::login('admin','123');
+<?php
+	/* Load */
+	require_once('load.php');
+    $auth = Authorize::getInstance();
+    if($auth->isLogin())
+        
 ?>
 <h1>Login</h1>
 <form method="post">

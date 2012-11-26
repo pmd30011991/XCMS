@@ -11,12 +11,13 @@
             $host = $_SERVER['SERVER_NAME'];
             $port = $_SERVER['SERVER_PORT'];
             $uri = $_SERVER['REQUEST_URI'];
+            $pathinfo = pathinfo($_SERVER['PHP_SELF']);
             $url = $protocol.'://'.$host.':'.$port.$uri;
             $url_element = parse_url($url);
             self::$SCHEME = $url_element['scheme'];
             self::$HOST = $url_element['host'];
             self::$PORT = isset($url_element['port'])?$url_element['port']:'';
-            self::$PATH = isset($url_element['path'])?$url_element['path']:'';
+            self::$PATH = isset($pathinfo['dirname'])?$pathinfo['dirname'].'/':'';
             self::$QUERY = isset($url_element['query'])? $url_element['query'] :'';
         }
         
