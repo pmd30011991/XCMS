@@ -13,16 +13,17 @@ require_once(ABSDIR.DS.'functions.php');
  Loader::import('Request');
  Loader::import('Theme');
  Loader::import('Session');
-
+ Loader::import('Authorize');
     
  /*Create instance of objects */
  Setting::getInstance();
  Request::getInstance();
  Theme::getInstance();
  Session::getInstance();
+ Authorize::getInstance();
  
+ 
+ Theme::load();
  /*Debug */
- 
- pr(Request::$QUERY);
     
 ?>

@@ -33,6 +33,18 @@ class Session
             }
         }
     }
+    public static function detroy($str){
+         $arr = explode('.', $str);
+         $arr = array_reverse($arr);
+        $current = &self::$session;
+        if (count($arr) > 0) {
+            foreach ($arr as $key) {
+                if (!isset($current[$key]))
+                    unset($current[$key]);
+                $current = &$current[$key];
+            }
+        }
+    }
     public static function read($str)
     {
 
@@ -41,7 +53,7 @@ class Session
         if (count($arr) > 0) {
             foreach ($arr as $key) {
                 if (!isset($current[$key]))
-                    $current[$key] = $value;
+                    return false;
                 $current = &$current[$key];
             }
         }

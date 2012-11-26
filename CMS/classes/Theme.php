@@ -6,6 +6,10 @@
         public function __construct() {
             parent::__construct();
         }
+        
+        public static function load() {
+            return self::get_site_element("index");
+        }
         public static function get_theme_name(){
             return self::getSetting("theme_name");
         }
@@ -31,9 +35,7 @@
             {
                 self::$_instance = new Theme();
             }
-            
             return self::$_instance;
         }
-
     }
 ?>

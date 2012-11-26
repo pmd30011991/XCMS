@@ -28,7 +28,17 @@ class Database extends PDO{
     
     public function query($string) {
         $st = self::$dbh->prepare($string);
-        $st->execute();
+        return $st->execute();
+    }
+    public function getData($model,$args = array()){
+        $where = "";
+        foreach ( $args as $key=>$value){
+            if($where =="")
+                $where .="$key='$value'";
+            else
+                $where .=" and $key='$value'";
+        }
+        return $this->query("SELECT * FROM ".$model." where ".$where);
     }
     // hàm l?y 1 record trong database v?i table là tên c?a class du?c g?i tr?c ti?p
     // $id: id c?a record
