@@ -26,6 +26,25 @@
                 self::$_instance = new Request();
             return self::$_instance;
         }
+        public static function post(){
+            return $_POST;
+        }
+        public static function redirect($str){
+             header( 'Location: '.$str);
+        }
+        public static function is_post(){
+           if($_SERVER['REQUEST_METHOD'] == 'POST')
+                return true;
+           return false;
+        }
+        public static function is_get(){
+           if($_SERVER['REQUEST_METHOD'] == 'GET')
+                return true;
+           return false;
+        }
+        public static function get(){
+            return $_GET;
+        }
         public static function get_site_url(){
             if(self::$PORT==80)
                 return self::$SCHEME.'://'.self::$HOST.self::$PATH;

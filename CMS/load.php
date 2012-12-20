@@ -34,5 +34,5 @@ require_once(ABSDIR.DS.'functions.php');
  
  Theme::load();
  /*Debug */
-    
+
 ?>
